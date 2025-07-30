@@ -8,14 +8,14 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null); // null = جارٍ التحميل، undefined = غير مسجل دخول
 
   const fetchUser = async () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('api_token');
     if (!token) {
       setUser(undefined); // لا يوجد توكن => غير مسجل دخول
       return;
     }
     try {
       const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/profile-by-token/', {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { 'X-API-TOKEN': token },
       });
       console.log("بيانات المستخدم:", res.data);
       setUser(res.data);
