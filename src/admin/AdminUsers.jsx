@@ -11,7 +11,7 @@ const AdminUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('https://watan-store-app.herokuapp.com/api/accounts/admin/users/', {
+        const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/admin/users/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data);
@@ -25,7 +25,7 @@ const AdminUsers = () => {
   const handleBalanceUpdate = async (userId, newBalance) => {
     try {
       await axios.post(
-        `https://watan-store-app.herokuapp.com/api/accounts/admin/users/${userId}/balance/`,
+        `https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/admin/users/${userId}/balance/`,
         { balance: newBalance },
         {
           headers: { Authorization: `Bearer ${token}` },

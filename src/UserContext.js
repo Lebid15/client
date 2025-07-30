@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await axios.get('https://watan-store-app.herokuapp.com/api/accounts/profile-by-token/', {
+      const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/profile-by-token/', {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log("بيانات المستخدم:", res.data);

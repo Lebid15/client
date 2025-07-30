@@ -18,7 +18,7 @@ const Orders = () => {
       }
 
       try {
-        const res = await axios.get('https://watan-store-app.herokuapp.com/api/products/my-orders/', {
+        const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/products/my-orders/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

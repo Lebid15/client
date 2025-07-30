@@ -19,14 +19,14 @@ const ProductDetails = () => {
       const token = localStorage.getItem('token');
       try {
         // 1. جلب بيانات المستخدم مع العملة ومجموعة الأسعار
-        const profileRes = await axios.get("https://watan-store-app.herokuapp.com/api/accounts/profile-by-token/", {
+        const profileRes = await axios.get("https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/profile-by-token/", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUserGroupId(profileRes.data.price_group_id || null);
         setUserCurrency(profileRes.data.currency || null);
 
         // 2. جلب المنتج
-        const res = await axios.get(`https://watan-store-app.herokuapp.com/api/products/${slug}/`, {
+        const res = await axios.get(`https://watan-store-app-2742b6ac556c.herokuapp.com/api/products/${slug}/`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProduct(res.data);
@@ -54,12 +54,12 @@ const ProductDetails = () => {
 
     try {
       await axios.post(
-        'https://watan-store-app.herokuapp.com/api/products/orders/create/',
+        'https://watan-store-app-2742b6ac556c.herokuapp.com/api/products/orders/create/',
         { package_id: selectedPackage.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const profileRes = await axios.get("https://watan-store-app.herokuapp.com/api/accounts/profile/", {
+      const profileRes = await axios.get("https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/profile/", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUser(profileRes.data);

@@ -13,7 +13,7 @@ const AdminOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('https://watan-store-app.herokuapp.com/api/products/admin/orders/', {
+        const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/products/admin/orders/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -30,7 +30,7 @@ const AdminOrders = () => {
   const handleReview = async (orderId, status) => {
     try {
       await axios.post(
-        `https://watan-store-app.herokuapp.com/api/products/admin/orders/${orderId}/review/`,
+        `https://watan-store-app-2742b6ac556c.herokuapp.com/api/products/admin/orders/${orderId}/review/`,
         { status },
         {
           headers: {

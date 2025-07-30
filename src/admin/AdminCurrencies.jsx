@@ -12,7 +12,7 @@ const AdminCurrencies = () => {
 
   const fetchCurrencies = async () => {
     try {
-      const res = await axios.get('https://watan-store-app.herokuapp.com/api/accounts/currencies/', {
+      const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/currencies/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,7 +32,7 @@ const AdminCurrencies = () => {
   const handleSave = async (currency) => {
     try {
       await axios.put(
-        `http://https://watan-store-app.herokuapp.com/api/accounts/currencies/${currency.id}/`,
+        `http://https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/currencies/${currency.id}/`,
         { rate_to_usd: currency.rate_to_usd },
         {
           headers: {
