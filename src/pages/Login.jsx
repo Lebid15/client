@@ -27,7 +27,7 @@ const Login = () => {
       // 3. جلب بيانات المستخدم (بما في ذلك api_token)
       const profileRes = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/profile-by-token/', {
         headers: {
-          Authorization: `Bearer ${access}`,
+          'X-API-TOKEN': access,  // استخدم هيدر X-API-TOKEN مع access token مؤقتًا
         },
       });
 
