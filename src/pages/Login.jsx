@@ -11,8 +11,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // ✅ تسجيل الدخول للحصول على access + refresh
-      const res = await axios.post('https://watan-store-app.herokuapp.com/api/token/', {
+      // 1. تسجيل الدخول والحصول على توكنات JWT
+      const res = await axios.post('https://watan-store-app-2742b6ac556c.herokuapp.com/api/token/', {
         email,
         password,
       });
@@ -20,30 +20,27 @@ const Login = () => {
       const access = res.data.access;
       const refresh = res.data.refresh;
 
+      // 2. حفظ التوكنات في localStorage
       localStorage.setItem('token', access);
       localStorage.setItem('refresh', refresh);
 
-      // ✅ جلب بيانات المستخدم (بما فيها api_token والصلاحيات) باستخدام JWT
-      const profileRes = await axios.get('https://watan-store-app.herokuapp.com/api/accounts/profile-by-token/', {
+      // 3. جلب بيانات المستخدم (بما في ذلك api_token)
+      const profileRes = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/accounts/profile-by-token/', {
         headers: {
           Authorization: `Bearer ${access}`,
         },
       });
 
       const apiToken = profileRes.data.api_token;
-      localStorage.setItem('api_token', apiToken); // ← حفظ توكن API
+      localStorage.setItem('api_token', apiToken);
 
-      // تحديد ما إذا كان المستخدم مشرفاً
+      // 4. تحديد صلاحيات المستخدم للتوجيه
       const isAdmin = profileRes.data.is_staff || profileRes.data.is_superuser;
 
+      console.log('User profile:', profileRes.data);
       alert('تم تسجيل الدخول بنجاح');
+      navigate('/'); 
 
-      // التوجيه حسب الصلاحيات
-      if (isAdmin) {
-        navigate('/admin/price-groups'); // ➡️ لوحة تحكم المشرفين
-      } else {
-        navigate('/'); // ➡️ الصفحة الرئيسية للمستخدم العادي
-      }
     } catch (err) {
       console.error(err);
       setError('البريد الإلكتروني أو كلمة المرور غير صحيحة');
@@ -88,7 +85,6 @@ const Login = () => {
           </button>
         </form>
 
-        {/* إضافة عبارة أسفل زر الدخول */}
         <p className="mt-4 text-center text-sm text-gray-600">
           لم يكن لديك حساب؟{' '}
           <a href="/register" className="text-blue-600 hover:underline">
