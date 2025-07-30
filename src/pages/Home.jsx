@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const token = localStorage.getItem('api_token');// مكان حفظ التوكن في المتصفح
+        const token = localStorage.getItem('api_token'); // مكان حفظ التوكن في المتصفح
 
         const res = await axios.get('https://watan-store-app-2742b6ac556c.herokuapp.com/api/products/', {
           headers: {
