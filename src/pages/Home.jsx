@@ -9,7 +9,14 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('https://watan-store-app.herokuapp.com/api/products/');
+        const token = localStorage.getItem('apiToken'); // مكان حفظ التوكن في المتصفح
+
+        const res = await axios.get('https://watan-store-app.herokuapp.com/api/products/', {
+          headers: {
+            'X-API-TOKEN': token,
+          },
+        });
+
         setProducts(res.data);
       } catch (error) {
         console.error('حدث خطأ أثناء تحميل المنتجات:', error);
@@ -39,7 +46,7 @@ const Home = () => {
           <ProductCard
             key={index}
             title={product.title}
-            slug={product.slug} // ← مهم جداً
+            slug={product.slug}
             image={`https://watan-store-app.herokuapp.com${product.image}`}
           />
         ))}
@@ -49,4 +56,3 @@ const Home = () => {
 };
 
 export default Home;
-
