@@ -16,7 +16,7 @@ const Profile = () => {
       }
 
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/accounts/profile/", {
+        const res = await axios.get("https://watan-store-app.herokuapp.com/api/accounts/profile/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/products/');
+        const res = await axios.get('https://watan-store-app.herokuapp.com/api/products/');
         setProducts(res.data);
       } catch (error) {
         console.error('حدث خطأ أثناء تحميل المنتجات:', error);
@@ -40,7 +40,7 @@ const Home = () => {
             key={index}
             title={product.title}
             slug={product.slug} // ← مهم جداً
-            image={`http://127.0.0.1:8000${product.image}`}
+            image={`https://watan-store-app.herokuapp.com${product.image}`}
           />
         ))}
       </div>

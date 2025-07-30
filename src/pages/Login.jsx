@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // ✅ تسجيل الدخول للحصول على access + refresh
-      const res = await axios.post('http://127.0.0.1:8000/api/token/', {
+      const res = await axios.post('https://watan-store-app.herokuapp.com/api/token/', {
         email,
         password,
       });
@@ -24,7 +24,7 @@ const Login = () => {
       localStorage.setItem('refresh', refresh);
 
       // ✅ جلب بيانات المستخدم (بما فيها api_token والصلاحيات) باستخدام JWT
-      const profileRes = await axios.get('http://127.0.0.1:8000/api/accounts/profile-by-token/', {
+      const profileRes = await axios.get('https://watan-store-app.herokuapp.com/api/accounts/profile-by-token/', {
         headers: {
           Authorization: `Bearer ${access}`,
         },

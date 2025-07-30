@@ -16,7 +16,7 @@ const Register = () => {
   });
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/accounts/currencies/")
+    axios.get("https://watan-store-app.herokuapp.com/api/accounts/currencies/")
       .then((res) => setCurrencies(res.data))
       .catch((err) => console.error("فشل في تحميل العملات:", err));
   }, []);
@@ -39,7 +39,7 @@ const Register = () => {
         currency: formData.currency || null,
       };
 
-      await axios.post("http://127.0.0.1:8000/api/accounts/register/", payload);
+      await axios.post("https://watan-store-app.herokuapp.com/api/accounts/register/", payload);
       alert("تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن.");
       navigate("/login");
     } catch (error) {
